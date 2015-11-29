@@ -1,3 +1,20 @@
+import array
+import numpy as np
+import warnings
+import scipy.sparse as sp
+
+from sklearn.base import BaseEstimator, ClassifierMixin, clone, is_classifier
+from sklearn.base import MetaEstimatorMixin, is_regressor
+from sklearn.preprocessing import LabelBinarizer
+from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.utils import check_random_state
+from sklearn.utils.validation import _num_samples
+from sklearn.utils.validation import check_consistent_length
+from sklearn.utils.validation import check_is_fitted
+from sklearn.externals.joblib import Parallel
+from sklearn.externals.joblib import delayed
+
+import numpy as np
 from sklearn.multiclass import OneVsRestClassifier
 
 class MultiOneVsRestClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
