@@ -1,3 +1,23 @@
+"""
+MultiOneVsRestClassifier
+===========================
+
+
+details required here.
+
+
+"""
+
+
+
+
+
+#Author: Hugo Bowne-Anderson <hugobowne@gmail.com>
+#Author: Chris Rivera
+
+#License: ?
+
+
 import array
 import numpy as np
 import warnings
@@ -18,15 +38,15 @@ import numpy as np
 from sklearn.multiclass import OneVsRestClassifier
 
 class MultiOneVsRestClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin):
-    """This class fits a series of one-versus-all models to response matrix Y with n_samples and p
-    labels on the predictor Matrix X with n_samples and m_feature variables. This allows for multiple 
-    label classification. For each label (column in Y), a separate OneVsRestClassifier is fit. 
+    """This class fits & predicts a series of one-versus-all models to response matrix Y, which has n_samples and p
+    target variables, on the predictor Matrix X with n_samples and m_feature variables. This allows for multiple 
+    target variable classifications. For each target variable (column in Y), a separate OneVsRestClassifier is fit. 
     See the base OneVsRestClassifier Class in sklearn.multiclass for more details.
     
     Parameters
     ----------
     estimator : estimator object
-        An estimator object implementing `fit` and one of `decision_function`
+        An estimator object implementing `fit` and one of `decision_function` (DOESN'T LOOK LIKE WE HAVE `decision_function`)
         or `predict_proba`.
     n_jobs : int, optional, default: 1
         The number of jobs to use for the computation. If -1 all CPUs are used.
@@ -34,8 +54,13 @@ class MultiOneVsRestClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixi
         useful for debugging. For n_jobs below -1, (n_cpus + 1 + n_jobs) are
         used. Thus for n_jobs = -2, all CPUs but one are used.
         
-        Note that parallel processing only occurs if there is multiple classes within each label. 
-        It does each label in y in series.
+        Note that parallel processing only occurs if there is multiple classes within each target variable. 
+        It does each target variable in y in series.
+
+
+        DO WE NEED an Attributes section?
+        compare with this:
+        https://github.com/hugobowne/scikit-learn/blob/developing_MultiOneVsRestClassifier/sklearn/multiclass.py
         
         """
     
@@ -51,7 +76,7 @@ class MultiOneVsRestClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixi
         X : (sparse) array-like, shape = [n_samples, n_features]
             Data.
 
-        y : (sparse) array-like, shape = [n_samples, n_classes]
+        y : (sparse) array-like, shape = [n_samples, n_classes] <--- is this correct? what happened to p = number of target variables?
             Multi-class targets. An indicator matrix turns on multilabel
             classification.
 
@@ -75,7 +100,7 @@ class MultiOneVsRestClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixi
         return self
     
     def predict(self, X):
-        """Predict multi-class multi-label targets using a model trained for each label. 
+        """Predict multi-class multiple target variable using a model trained for each target variable. 
 
         Parameters
         ----------
