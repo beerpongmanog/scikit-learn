@@ -48,8 +48,12 @@ New features
      (`#5291 <https://github.com/scikit-learn/scikit-learn/pull/5291>`_) by `Manoj Kumar`_.
 
    - Added the :class:`multioutput.MultiOutputRegressor` meta-estimator. It
-     converts single output regressors to multi-ouput regressors by fitting
+     converts single output regressors to multi-output regressors by fitting
      one regressor per output. By `Tim Head`_.
+
+   - Added the :class:`multioutput.MultiOutputClassifier` meta-estimator. It
+     converts single output classifiers to multioutput classifiers by fitting
+     one classifier per output. By `Hugo Bowne`_.
 
 Enhancements
 ............
@@ -4136,3 +4140,5 @@ David Huard, Dave Morrill, Ed Schofield, Travis Oliphant, Pearu Peterson.
 .. _Ryad Zenine: https://github.com/ryadzenine
 
 .. _Guillaume Lemaitre: https://github.com/glemaitre
+
+.. _Hugo Bowne: https://github.com/hugobowne

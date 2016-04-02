@@ -58,7 +58,7 @@ class MultiOutputEstimator(six.with_metaclass(ABCMeta, BaseEstimator)):
 
         sample_weight : array-like, shape = (n_samples) or None
             Sample weights. If None, then samples are equally weighted.
-            Only supported if the underlying regressor supports sample
+            Only supported if the underlying estimator supports sample
             weights.
         Returns
         -------
